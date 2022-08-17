@@ -18,7 +18,7 @@
   box-shadow: 17px 21px 30px -10px rgba(0,0,0,0.58);
 
   transition-property: all;
-  transition-duration: 300ms;
+  transition-duration: 200ms;
   transition-timing-function: ease-out;
 }
 
