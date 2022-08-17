@@ -1,6 +1,5 @@
 import React,{ Component } from 'react';
 import CardList from './CardList';
-import robots from './Names';
 import Search from './Search';
 import Scroll from './Scroll';
 
@@ -9,13 +8,19 @@ class AppComp extends Component {
     constructor() {
         super()
         this.state = {
-            robots : robots,
+            robots : [],
             searchField : ""
         }
     }
 
+    componentDidMount() {
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json()) 
+            .then(users => this.setState({robots : users}));
+        
+    }
+
     onSearchChange = (event) => {
-        console.log(event);
         this.setState({searchField : event.target.value})
     }
 
@@ -23,7 +28,6 @@ class AppComp extends Component {
         const filteredRobots = this.state.robots.filter(stuff => {
             return stuff.name.toLowerCase().includes(this.state.searchField.toLowerCase());
         }) 
-
         return(
             <div>
                 <div className='header'>
@@ -37,7 +41,6 @@ class AppComp extends Component {
             </div>
         )    
     }
-
 }
 
 

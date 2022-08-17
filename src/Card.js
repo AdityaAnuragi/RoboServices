@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Card = (props) => {
+const   Card = (props) => {
     const {id,name,email} = props; 
     return(
         <div className='container one'>            
